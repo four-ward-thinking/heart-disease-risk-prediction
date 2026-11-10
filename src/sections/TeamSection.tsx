@@ -96,12 +96,11 @@ export const TeamSection: React.FC = () => {
                   marginTop: '0.75rem',
                   fontSize: '0.72rem',
                   color: 'var(--brass-text)',
-                  textTransform: 'uppercase',
                   letterSpacing: '0.08em',
                   fontWeight: 600,
                 }}
               >
-                Data Science & AI
+                Dept.BioTechnology
               </div>
             </div>
           ))}

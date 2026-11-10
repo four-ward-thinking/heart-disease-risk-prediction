@@ -1,7 +1,7 @@
 # Heart Disease Risk Prediction
 
 **Team 2, Four-Ward Thinking**  
-*B.Tech Data Science & AI · SRM Institute of Science and Technology, Ramapuram*
+*Dept.BioTechnology · B.Tech BT-A · SRM Institute of Science and Technology, Ramapuram*
 
 > **Educational prototype, not a clinical tool.**  
 > This application is an academic demonstration developed for coursework evaluation. It is not certified, validated, or intended for medical screening, diagnosis, prognosis, or clinical decision support. Real clinical cardiology requires comprehensive evaluation by qualified healthcare practitioners.
@@ -24,12 +24,13 @@ The system features:
 
 | Name | Register Number | Role / Department |
 | :--- | :--- | :--- |
-| **Mathivadanasree B** | `RA2611009020012` | Data Science & Modeling |
-| **Seetha Shree A** | `RA2611009020041` | ML Pipeline & Evaluation |
-| **Rithikaa J** | `RA2611009020049` | Full-Stack Engine & Frontend |
-| **Tharunika M.A** | `RA2611009020051` | Fairness, Text NLP & UI Design |
+| **Mathivadanasree B** | `RA2611009020012` | Dept.BioTechnology |
+| **Seetha Shree A** | `RA2611009020041` | Dept.BioTechnology |
+| **Rithikaa J** | `RA2611009020049` | Dept.BioTechnology |
+| **Tharunika M.A** | `RA2611009020051` | Dept.BioTechnology |
 
-*Course:* B.Tech Data Science & AI (BT-A)  
+*Course:* B.Tech Biotechnology (BT-A)  
+*Department:* Dept.BioTechnology  
 *Institution:* SRM Institute of Science and Technology, Ramapuram  
 
 ---

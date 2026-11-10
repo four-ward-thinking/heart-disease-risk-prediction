@@ -46,7 +46,7 @@ export const config: AppConfig = {
     {
       name: "Tharunika M.A",
       regNo: "RA2611009020051",
-      initials: "TM",
+      initials: "TH",
     },
   ],
 };
