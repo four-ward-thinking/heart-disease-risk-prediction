@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build artifacts
+dist/
+dist-ssr/
+*.local
+
+# Cache and temporary files
+.vite/
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
+*.log
+coverage/
+
+# Audit and testing reports
+lighthouse-report.json
+qa-test.mjs
+screenshot-*.png

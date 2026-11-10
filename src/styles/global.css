@@ -1,0 +1,302 @@
+@import './tokens.css';
+
+/* Universal Box Sizing & Clean Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bone);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: var(--bone);
+  color: var(--ink);
+  min-height: 100vh;
+  position: relative;
+  /* Very faint paper grain (SVG noise) */
+  background-image: radial-gradient(var(--line) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* Tabular Numerals for all data and metrics */
+.tabular-nums,
+[data-tabular="true"] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Headings & Editorial Typography */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  font-weight: 350;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 400;
+}
+
+/* Eyebrows: letter-spaced small uppercase */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--mute);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.eyebrow-brass {
+  color: var(--brass-text);
+}
+
+/* Lead and Mute Body Text */
+.lead-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--mute);
+  max-width: 64ch;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 2px;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.text-link {
+  color: var(--pine);
+  font-weight: 500;
+  border-bottom: 1px solid var(--brass);
+  transition: color 0.15s ease, border-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+a.text-link:hover {
+  color: var(--pine-2);
+  border-bottom-color: var(--pine-2);
+}
+
+/* Standard Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1.35rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--pine);
+  color: var(--bone);
+  border-color: var(--pine);
+}
+
+.btn-primary:hover {
+  background-color: var(--pine-2);
+  border-color: var(--pine-2);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn-outline:hover {
+  background-color: var(--paper);
+  border-color: var(--brass);
+}
+
+.btn-small {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+/* Hairline dividers & ledger structures */
+.hairline-b {
+  border-bottom: 1px solid var(--line);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--line);
+}
+
+.hairline-box {
+  border: 1px solid var(--line);
+  background-color: var(--paper);
+  border-radius: var(--radius-xs);
+}
+
+/* Chip tags */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--line);
+}
+
+.chip-low {
+  background-color: var(--sage-faint);
+  color: var(--sage-text);
+  border-color: var(--sage);
+}
+
+.chip-high {
+  background-color: var(--crimson-faint);
+  color: var(--crimson-text);
+  border-color: var(--crimson);
+}
+
+.chip-neutral {
+  background-color: var(--paper);
+  color: var(--mute);
+  border-color: var(--line);
+}
+
+.chip-warning {
+  background-color: var(--brass-faint);
+  color: var(--brass-text);
+  border-color: var(--brass);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 3.5vw, 2.5rem);
+  padding-right: clamp(1rem, 3.5vw, 2.5rem);
+}
+
+.section-spacing {
+  padding-top: clamp(3.5rem, 6vw, 6rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced Motion Override (Mandatory) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Stylesheet for Assess Summary (Mandatory) */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    background-image: none !important;
+    font-size: 11pt !important;
+  }
+
+  .no-print,
+  nav,
+  .notice-strip,
+  #hero,
+  #how-built,
+  #band,
+  #model,
+  #data,
+  #fairness,
+  #pulse,
+  #team,
+  footer {
+    display: none !important;
+  }
+
+  #assess {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-page {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1cm !important;
+  }
+
+  .hairline-box {
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}

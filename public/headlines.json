@@ -1,0 +1,397 @@
+{
+  "summary": {
+    "positive": 12,
+    "negative": 7,
+    "neutral": 1,
+    "mean_compound": 0.0725
+  },
+  "orange_reference": {
+    "source": "Team 2 Orange Text Add-on Workflow",
+    "counts": {
+      "negative": 10,
+      "neutral": 4,
+      "positive": 6
+    },
+    "mean_compound": -0.18,
+    "sample_headline": "GLP-1 meds linked to lower diabetes, heart risks than standard diabetes prevention med",
+    "sample_score": -0.51,
+    "divergence_explanation": "Orange applies text preprocessing (tokenization, lowercase conversion, and medical/domain stop-word removal) before scoring. Raw VADER scores the word 'heart' as +3.20 (social media affinity), causing un-preprocessed medical headlines to skew falsely positive."
+  },
+  "headlines": [
+    {
+      "headline": "Long-term study finds modern hormone replacement therapy not linked to heart disease risk",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149494",
+      "compound": -0.6671,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "heart",
+          "valence": 3.2
+        },
+        {
+          "word": "risk",
+          "valence": -1.1
+        }
+      ]
+    },
+    {
+      "headline": "Cardiac arrest ICU admissions rose with outdoor heat, especially in women, older adults",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149495",
+      "compound": -0.34,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "arrest",
+          "valence": -1.4
+        }
+      ]
+    },
+    {
+      "headline": "Leading health groups redefine heart health for girls and women",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-26",
+      "url": "https://www.eurekalert.org/news-releases/1148767",
+      "compound": 0.6369,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "heart",
+          "valence": 3.2
+        }
+      ]
+    },
+    {
+      "headline": "Why every stage of life matters for a woman's heart health",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-26",
+      "url": "https://www.eurekalert.org/news-releases/1148769",
+      "compound": 0.6486,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "matters",
+          "valence": 0.1
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        }
+      ]
+    },
+    {
+      "headline": "Survey finds gaps in use of cardiovascular-kidney-metabolic syndrome tools",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149488",
+      "compound": 0.0,
+      "label": "neutral",
+      "lexicon_hits": []
+    },
+    {
+      "headline": "Deaths from heart valve disease rising among U.S. adults ages 65 and older",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149489",
+      "compound": 0.6369,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "heart",
+          "valence": 3.2
+        }
+      ]
+    },
+    {
+      "headline": "Medically tailored meals improved high blood pressure, Type 2 diabetes and diet in adults",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149490",
+      "compound": 0.2263,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "improved",
+          "valence": 2.1
+        },
+        {
+          "word": "pressure",
+          "valence": -1.2
+        }
+      ]
+    },
+    {
+      "headline": "Rural residents faced nearly 3x higher risk of heart attack death before reaching a hospital",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149491",
+      "compound": -0.4767,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "risk",
+          "valence": -1.1
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        },
+        {
+          "word": "attack",
+          "valence": -2.1
+        },
+        {
+          "word": "death",
+          "valence": -2.9
+        },
+        {
+          "word": "reaching",
+          "valence": 0.8
+        }
+      ]
+    },
+    {
+      "headline": "Wearable devices + AI analysis may predict high blood pressure crisis up to 3 days early",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149493",
+      "compound": -0.743,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "pressure",
+          "valence": -1.2
+        },
+        {
+          "word": "crisis",
+          "valence": -3.1
+        }
+      ]
+    },
+    {
+      "headline": "GLP-1 meds linked to lower diabetes, heart risks than standard diabetes prevention med",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149482",
+      "compound": 0.2263,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "lower",
+          "valence": -1.2
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        },
+        {
+          "word": "risks",
+          "valence": -1.1
+        }
+      ]
+    },
+    {
+      "headline": "Energy drinks, stimulant products linked to cardiac arrest, heart attack in young adults",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149483",
+      "compound": 0.2023,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "energy",
+          "valence": 1.1
+        },
+        {
+          "word": "arrest",
+          "valence": -1.4
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        },
+        {
+          "word": "attack",
+          "valence": -2.1
+        }
+      ]
+    },
+    {
+      "headline": "Hypertension or diabetes before pregnancy linked to higher risk of fetal heart defects",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149486",
+      "compound": 0.1027,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "risk",
+          "valence": -1.1
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        },
+        {
+          "word": "defects",
+          "valence": -1.7
+        }
+      ]
+    },
+    {
+      "headline": "Retired NFL players, notably linemen, had high risk of artery plaque, per independent study",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149484",
+      "compound": -0.2732,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "risk",
+          "valence": -1.1
+        }
+      ]
+    },
+    {
+      "headline": "Transportation noise linked to higher risk of heart conditions, even with healthy sleep",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-11-02",
+      "url": "https://www.eurekalert.org/news-releases/1149487",
+      "compound": 0.7003,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "risk",
+          "valence": -1.1
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        },
+        {
+          "word": "healthy",
+          "valence": 1.7
+        }
+      ]
+    },
+    {
+      "headline": "What doctors want women to know about menopause and heart health",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-13",
+      "url": "https://www.eurekalert.org/news-releases/1147466",
+      "compound": 0.6705,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "want",
+          "valence": 0.3
+        },
+        {
+          "word": "heart",
+          "valence": 3.2
+        }
+      ]
+    },
+    {
+      "headline": "Managing high blood pressure could prevent >500K CVD deaths annually in 20 countries",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-11",
+      "url": "https://www.eurekalert.org/news-releases/1146592",
+      "compound": -0.2732,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "pressure",
+          "valence": -1.2
+        },
+        {
+          "word": "prevent",
+          "valence": 0.1
+        }
+      ]
+    },
+    {
+      "headline": "Elderly adults with masked high blood pressure had higher risk of falls",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-09",
+      "url": "https://www.eurekalert.org/news-releases/1146591",
+      "compound": -0.5106,
+      "label": "negative",
+      "lexicon_hits": [
+        {
+          "word": "pressure",
+          "valence": -1.2
+        },
+        {
+          "word": "risk",
+          "valence": -1.1
+        }
+      ]
+    },
+    {
+      "headline": "Top AI tools accurately identified validated home BP monitors only about 2/3 of the time",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-08",
+      "url": "https://www.eurekalert.org/news-releases/1146589",
+      "compound": 0.4019,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "top",
+          "valence": 0.8
+        },
+        {
+          "word": "validated",
+          "valence": 0.9
+        }
+      ]
+    },
+    {
+      "headline": "Potassium-rich DASH diet found safe for adults taking common blood pressure medications",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-08",
+      "url": "https://www.eurekalert.org/news-releases/1146590",
+      "compound": 0.1779,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "safe",
+          "valence": 1.9
+        },
+        {
+          "word": "pressure",
+          "valence": -1.2
+        }
+      ]
+    },
+    {
+      "headline": "California researchers awarded grant to develop sudden cardiac arrest early warning system",
+      "source": "American Heart Association news release (via EurekAlert!)",
+      "date": "2026-10-29",
+      "url": "https://www.eurekalert.org/news-releases/1149653",
+      "compound": 0.1027,
+      "label": "positive",
+      "lexicon_hits": [
+        {
+          "word": "awarded",
+          "valence": 1.7
+        },
+        {
+          "word": "grant",
+          "valence": 1.5
+        },
+        {
+          "word": "arrest",
+          "valence": -1.4
+        },
+        {
+          "word": "warning",
+          "valence": -1.4
+        }
+      ]
+    }
+  ]
+}

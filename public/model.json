@@ -1,0 +1,340 @@
+{
+  "model_type": "LogisticRegression",
+  "random_state": 42,
+  "solver": "lbfgs",
+  "intercept": -0.22816294405273624,
+  "num_cols": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalach",
+    "oldpeak"
+  ],
+  "cat_cols": [
+    "sex",
+    "cp",
+    "fbs",
+    "restecg",
+    "exang",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "cat_domains": {
+    "sex": [
+      0,
+      1
+    ],
+    "cp": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "fbs": [
+      0,
+      1
+    ],
+    "restecg": [
+      0,
+      1,
+      2
+    ],
+    "exang": [
+      0,
+      1
+    ],
+    "slope": [
+      1,
+      2,
+      3
+    ],
+    "ca": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "thal": [
+      3,
+      6,
+      7
+    ]
+  },
+  "feature_labels": {
+    "age": "Age",
+    "sex": "Sex",
+    "cp": "Chest pain type",
+    "trestbps": "Resting blood pressure",
+    "chol": "Serum cholesterol",
+    "fbs": "Fasting blood sugar",
+    "restecg": "Resting ECG",
+    "thalach": "Maximum heart rate achieved",
+    "exang": "Exercise-induced angina",
+    "oldpeak": "ST depression induced by exercise",
+    "slope": "Slope of peak exercise ST segment",
+    "ca": "Major vessels coloured by fluoroscopy",
+    "thal": "Thallium stress test result"
+  },
+  "encoded_feature_names": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalach",
+    "oldpeak",
+    "sex_0",
+    "sex_1",
+    "cp_1",
+    "cp_2",
+    "cp_3",
+    "cp_4",
+    "fbs_0",
+    "fbs_1",
+    "restecg_0",
+    "restecg_1",
+    "restecg_2",
+    "exang_0",
+    "exang_1",
+    "slope_1",
+    "slope_2",
+    "slope_3",
+    "ca_0",
+    "ca_1",
+    "ca_2",
+    "ca_3",
+    "thal_3",
+    "thal_6",
+    "thal_7"
+  ],
+  "coefficients": {
+    "age": 0.11809722510607533,
+    "trestbps": 0.20551482696158543,
+    "chol": 0.1443349433062942,
+    "thalach": -0.30211013694993266,
+    "oldpeak": 0.10332542458552828,
+    "sex_0": -0.6676422257395159,
+    "sex_1": 0.6583027229243469,
+    "cp_1": -0.519641506296329,
+    "cp_2": -0.017345415701638344,
+    "cp_3": -0.640462057158956,
+    "cp_4": 1.1681094763417534,
+    "fbs_0": 0.2325941421587579,
+    "fbs_1": -0.24193364497392544,
+    "restecg_0": -0.14236472671188513,
+    "restecg_1": -0.09195607949388186,
+    "restecg_2": 0.22498130339059882,
+    "exang_0": -0.2903296826093593,
+    "exang_1": 0.2809901797941928,
+    "slope_1": -0.37696940361359665,
+    "slope_2": 0.4142321329562353,
+    "slope_3": -0.04660223215780659,
+    "ca_0": -1.3502551059221395,
+    "ca_1": 0.3440053621334872,
+    "ca_2": 0.43096418290212496,
+    "ca_3": 0.5659460580713603,
+    "thal_3": -0.5755350478787322,
+    "thal_6": -0.18779351213629875,
+    "thal_7": 0.7539890571998649
+  },
+  "impute_modes": {
+    "sex": 1,
+    "cp": 4,
+    "fbs": 0,
+    "restecg": 2,
+    "exang": 0,
+    "slope": 1,
+    "ca": 0,
+    "thal": 3
+  },
+  "num_means": {
+    "age": 54.613207547169814,
+    "trestbps": 130.02358490566039,
+    "chol": 249.70283018867926,
+    "thalach": 149.6933962264151,
+    "oldpeak": 0.9971698113207547
+  },
+  "num_stds": {
+    "age": 8.925869499125266,
+    "trestbps": 16.482249181827328,
+    "chol": 54.798958393811056,
+    "thalach": 21.979307459293945,
+    "oldpeak": 1.1167217476749314
+  },
+  "feature_ranges": {
+    "age": {
+      "min": 29.0,
+      "max": 77.0,
+      "mean": 54.43894389438944,
+      "std": 9.038662442446746
+    },
+    "trestbps": {
+      "min": 94.0,
+      "max": 200.0,
+      "mean": 131.68976897689768,
+      "std": 17.59974772958769
+    },
+    "chol": {
+      "min": 126.0,
+      "max": 564.0,
+      "mean": 246.69306930693068,
+      "std": 51.77691754263704
+    },
+    "thalach": {
+      "min": 71.0,
+      "max": 202.0,
+      "mean": 149.6072607260726,
+      "std": 22.875003276980376
+    },
+    "oldpeak": {
+      "min": 0.0,
+      "max": 6.2,
+      "mean": 1.0396039603960396,
+      "std": 1.1610750220686348
+    }
+  },
+  "feature_importance_13": [
+    {
+      "feature": "ca",
+      "label": "Major vessels coloured by fluoroscopy",
+      "type": "categorical",
+      "weight": -1.3503,
+      "importance": 1.3503,
+      "category_coefficients": {
+        "0": -1.3503,
+        "1": 0.344,
+        "2": 0.431,
+        "3": 0.5659
+      },
+      "interpretation": "Aggregated categorical impact across 4 levels"
+    },
+    {
+      "feature": "cp",
+      "label": "Chest pain type",
+      "type": "categorical",
+      "weight": 1.1681,
+      "importance": 1.1681,
+      "category_coefficients": {
+        "1": -0.5196,
+        "2": -0.0173,
+        "3": -0.6405,
+        "4": 1.1681
+      },
+      "interpretation": "Aggregated categorical impact across 4 levels"
+    },
+    {
+      "feature": "thal",
+      "label": "Thallium stress test result",
+      "type": "categorical",
+      "weight": 0.754,
+      "importance": 0.754,
+      "category_coefficients": {
+        "3": -0.5755,
+        "6": -0.1878,
+        "7": 0.754
+      },
+      "interpretation": "Aggregated categorical impact across 3 levels"
+    },
+    {
+      "feature": "sex",
+      "label": "Sex",
+      "type": "categorical",
+      "weight": -0.6676,
+      "importance": 0.6676,
+      "category_coefficients": {
+        "0": -0.6676,
+        "1": 0.6583
+      },
+      "interpretation": "Aggregated categorical impact across 2 levels"
+    },
+    {
+      "feature": "slope",
+      "label": "Slope of peak exercise ST segment",
+      "type": "categorical",
+      "weight": 0.4142,
+      "importance": 0.4142,
+      "category_coefficients": {
+        "1": -0.377,
+        "2": 0.4142,
+        "3": -0.0466
+      },
+      "interpretation": "Aggregated categorical impact across 3 levels"
+    },
+    {
+      "feature": "thalach",
+      "label": "Maximum heart rate achieved",
+      "type": "numeric",
+      "weight": -0.3021,
+      "importance": 0.3021,
+      "interpretation": "Continuous risk gradient (per 1 standard deviation shift)"
+    },
+    {
+      "feature": "exang",
+      "label": "Exercise-induced angina",
+      "type": "categorical",
+      "weight": -0.2903,
+      "importance": 0.2903,
+      "category_coefficients": {
+        "0": -0.2903,
+        "1": 0.281
+      },
+      "interpretation": "Aggregated categorical impact across 2 levels"
+    },
+    {
+      "feature": "fbs",
+      "label": "Fasting blood sugar",
+      "type": "categorical",
+      "weight": -0.2419,
+      "importance": 0.2419,
+      "category_coefficients": {
+        "0": 0.2326,
+        "1": -0.2419
+      },
+      "interpretation": "Aggregated categorical impact across 2 levels"
+    },
+    {
+      "feature": "restecg",
+      "label": "Resting ECG",
+      "type": "categorical",
+      "weight": 0.225,
+      "importance": 0.225,
+      "category_coefficients": {
+        "0": -0.1424,
+        "1": -0.092,
+        "2": 0.225
+      },
+      "interpretation": "Aggregated categorical impact across 3 levels"
+    },
+    {
+      "feature": "trestbps",
+      "label": "Resting blood pressure",
+      "type": "numeric",
+      "weight": 0.2055,
+      "importance": 0.2055,
+      "interpretation": "Continuous risk gradient (per 1 standard deviation shift)"
+    },
+    {
+      "feature": "chol",
+      "label": "Serum cholesterol",
+      "type": "numeric",
+      "weight": 0.1443,
+      "importance": 0.1443,
+      "interpretation": "Continuous risk gradient (per 1 standard deviation shift)"
+    },
+    {
+      "feature": "age",
+      "label": "Age",
+      "type": "numeric",
+      "weight": 0.1181,
+      "importance": 0.1181,
+      "interpretation": "Continuous risk gradient (per 1 standard deviation shift)"
+    },
+    {
+      "feature": "oldpeak",
+      "label": "ST depression induced by exercise",
+      "type": "numeric",
+      "weight": 0.1033,
+      "importance": 0.1033,
+      "interpretation": "Continuous risk gradient (per 1 standard deviation shift)"
+    }
+  ]
+}
