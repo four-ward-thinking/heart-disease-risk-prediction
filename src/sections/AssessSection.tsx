@@ -58,7 +58,21 @@ export const AssessSection: React.FC<AssessSectionProps> = ({ model, metrics, da
     actualDiagnosis: number;
   } | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<boolean>(false);
+  const [assessInView, setAssessInView] = useState<boolean>(false);
   const [advancedOpen, setAdvancedOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const el = document.getElementById('assess');
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setAssessInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Accessible IDs for inputs
   const ageId = useId();
@@ -1397,40 +1411,42 @@ export const AssessSection: React.FC<AssessSectionProps> = ({ model, metrics, da
           </div>
         </div>
 
-        {/* MOBILE COLLAPSED BOTTOM BAR (Appears on screens < 860px) */}
-        <div className="mobile-bottom-bar no-print">
-          <div
-            onClick={() => setMobileExpanded(!mobileExpanded)}
-            style={{
-              padding: '0.75rem 1.25rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              cursor: 'pointer',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.6rem',
-                  lineHeight: 1,
-                  color: isHighRisk ? 'var(--crimson)' : 'var(--pine)',
-                }}
-              >
-                {Math.round(prob * 100)}%
-              </span>
-              <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{riskCategoryText}</span>
-            </div>
-            <button
-              type="button"
-              className="btn btn-outline btn-small"
-              style={{ fontSize: '0.72rem' }}
+        {/* MOBILE COLLAPSED BOTTOM BAR (Appears on screens < 860px when assessment section is in view) */}
+        {assessInView && (
+          <div className="mobile-bottom-bar no-print">
+            <div
+              onClick={() => setMobileExpanded(!mobileExpanded)}
+              style={{
+                padding: '0.75rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                cursor: 'pointer',
+              }}
             >
-              {mobileExpanded ? 'Collapse' : 'View result details'}
-            </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.6rem',
+                    lineHeight: 1,
+                    color: isHighRisk ? 'var(--crimson)' : 'var(--pine)',
+                  }}
+                >
+                  {Math.round(prob * 100)}%
+                </span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{riskCategoryText}</span>
+              </div>
+              <button
+                type="button"
+                className="btn btn-outline btn-small"
+                style={{ fontSize: '0.72rem' }}
+              >
+                {mobileExpanded ? 'Collapse' : 'View result details'}
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <style>{`

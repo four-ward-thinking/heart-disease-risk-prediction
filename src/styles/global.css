@@ -249,6 +249,24 @@ a.text-link:hover {
   border-width: 0;
 }
 
+/* Hero responsive 7/5 split grid */
+.hero-left {
+  grid-column: span 12;
+}
+
+.hero-right {
+  grid-column: span 12;
+}
+
+@media (min-width: 992px) {
+  .hero-left {
+    grid-column: span 7 !important;
+  }
+  .hero-right {
+    grid-column: span 5 !important;
+  }
+}
+
 /* Reduced Motion Override (Mandatory) */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

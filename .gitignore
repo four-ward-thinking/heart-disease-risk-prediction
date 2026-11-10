@@ -21,4 +21,7 @@ coverage/
 # Audit and testing reports
 lighthouse-report.json
 qa-test.mjs
+capture_hero.mjs
+*.mjs
 screenshot-*.png
+

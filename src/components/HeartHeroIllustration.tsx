@@ -7,372 +7,272 @@ interface HeartHeroIllustrationProps {
 export const HeartHeroIllustration: React.FC<HeartHeroIllustrationProps> = ({ className }) => {
   return (
     <div
+      className={`hero-heart-wrapper ${className || ''}`}
       style={{
-        position: 'relative',
         width: '100%',
-        maxWidth: '540px',
+        maxWidth: '720px',
         margin: '0 auto',
       }}
-      className={className}
     >
-      {/* Background ECG trace passing behind the heart and running off the right edge */}
-      <svg
-        viewBox="0 0 700 300"
-        style={{
-          position: 'absolute',
-          top: '38%',
-          left: '-10%',
-          width: '120%',
-          height: '140px',
-          zIndex: 1,
-          pointerEvents: 'none',
-          overflow: 'visible',
-        }}
-        aria-hidden="true"
-      >
-        <path
-          d="M -50 70 L 100 70 L 115 70 L 125 55 L 135 85 L 145 25 L 160 120 L 175 60 L 185 75 L 195 70 L 320 70 L 335 70 L 345 58 L 355 82 L 365 30 L 380 115 L 395 62 L 405 76 L 415 70 L 530 70 L 545 70 L 555 52 L 565 88 L 575 20 L 590 125 L 605 60 L 615 78 L 625 70 L 760 70"
-          fill="none"
-          stroke="var(--brass)"
-          strokeWidth="1.25"
-          strokeDasharray="4 2"
-          opacity="0.45"
-        />
-      </svg>
+      <style>{`
+        @keyframes heroEcgDraw {
+          0% {
+            stroke-dashoffset: 1400;
+          }
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
 
-      {/* Hand-built Anatomical Engraved Plate */}
+        .hero-ecg-line {
+          stroke-dasharray: 1400;
+          stroke-dashoffset: 1400;
+          animation: heroEcgDraw 2.4s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-ecg-line {
+            animation: none !important;
+            stroke-dashoffset: 0 !important;
+          }
+        }
+
+        @media (max-width: 639px) {
+          .hero-callouts-desktop {
+            display: none !important;
+          }
+          .hero-legend-mobile {
+            display: flex !important;
+          }
+        }
+
+        @media (min-width: 640px) {
+          .hero-callouts-desktop {
+            display: inline;
+          }
+          .hero-legend-mobile {
+            display: none !important;
+          }
+        }
+      `}</style>
+
+      {/* Inline SVG Heart with viewBox 0 0 760 470 */}
       <svg
-        viewBox="0 0 500 520"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 760 470"
+        role="img"
+        aria-labelledby="hero-heart-title hero-heart-desc"
         style={{
-          position: 'relative',
-          zIndex: 2,
           width: '100%',
           height: 'auto',
-          filter: 'drop-shadow(0 8px 24px rgba(20, 32, 30, 0.06))',
+          display: 'block',
+          overflow: 'visible',
         }}
-        role="img"
-        aria-label="Engraved anatomical plate of the human heart with pinned clinical annotations"
       >
+        <title id="hero-heart-title">Anterior view of the human heart</title>
+        <desc id="hero-heart-desc">Anterior view of the heart with ca, thalach and oldpeak labelled</desc>
+
         <defs>
-          {/* Subtle paper-tone and crimson washes */}
-          <linearGradient id="aortaWash" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#C99F60" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#9C753A" stopOpacity="0.25" />
-          </linearGradient>
-
-          <linearGradient id="ventricleWash" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#A3302B" stopOpacity="0.28" />
-            <stop offset="60%" stopColor="#A3302B" stopOpacity="0.16" />
-            <stop offset="100%" stopColor="#F4F0E7" stopOpacity="0.2" />
-          </linearGradient>
-
-          <linearGradient id="atriumWash" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#5E8174" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#F4F0E7" stopOpacity="0.15" />
-          </linearGradient>
-
-          {/* Hatching patterns for engraving plate depth */}
-          <pattern id="hatchH" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="6" stroke="#14201E" strokeWidth="0.65" opacity="0.3" />
+          <pattern id="hero-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(38)">
+            <line x1="0" y1="0" x2="0" y2="5" stroke="var(--ink)" strokeOpacity="0.16" strokeWidth="0.7" />
           </pattern>
-          <pattern id="hatchDense" width="4" height="4" patternTransform="rotate(-30 0 0)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="4" stroke="#14201E" strokeWidth="0.5" opacity="0.22" />
-          </pattern>
+          <clipPath id="hero-body">
+            <path
+              id="heroBodyPath"
+              d="M168 150 C124 146 96 182 98 226 C100 276 128 312 160 352 C192 392 230 426 268 428 C318 428 356 360 368 286 C376 240 370 190 336 160 C310 138 274 152 244 146 C220 142 198 152 168 150 Z"
+            />
+          </clipPath>
         </defs>
 
-        {/* Outer Plate Framing Rule */}
-        <rect
-          x="12"
-          y="12"
-          width="476"
-          height="496"
-          fill="var(--paper)"
-          stroke="var(--line)"
-          strokeWidth="1"
-          rx="2"
-        />
-        <rect
-          x="18"
-          y="18"
-          width="464"
-          height="484"
-          fill="none"
-          stroke="var(--line)"
-          strokeWidth="0.5"
-          strokeDasharray="2 2"
-        />
-
-        {/* Plate Header Typographic Ornament */}
-        <text
-          x="30"
-          y="38"
-          fontFamily="var(--font-sans)"
-          fontSize="9"
-          letterSpacing="0.16em"
-          fill="var(--brass)"
-          fontWeight="600"
-        >
-          PLATE IV · ANATOMIA CARDIOVASCULARIS
-        </text>
-        <text
-          x="470"
-          y="38"
-          textAnchor="end"
-          fontFamily="var(--font-serif)"
-          fontStyle="italic"
-          fontSize="10"
-          fill="var(--mute)"
-        >
-          Cleveland Series
-        </text>
-
-        {/* --- ANATOMICAL HEART STRUCTURE --- */}
-        <g transform="translate(15, 10)">
-          {/* Superior Vena Cava (Right) */}
+        {/* 1. ECG line passing behind the heart with draw-on-load animation */}
+        <g fill="none">
           <path
-            d="M 180 100 C 180 75 190 60 205 55 C 220 55 225 70 225 95 C 225 110 215 125 210 135 Z"
-            fill="url(#atriumWash)"
-            stroke="var(--ink)"
-            strokeWidth="1.2"
-          />
-          {/* Vena Cava hatchings */}
-          <path
-            d="M 188 65 L 188 110 M 195 60 L 195 120 M 202 58 L 202 125 M 212 62 L 212 120"
-            stroke="var(--ink)"
-            strokeWidth="0.6"
-            opacity="0.35"
-          />
-
-          {/* Ascending Aorta & Arch */}
-          <path
-            d="M 215 130 C 220 85 240 60 275 60 C 315 60 335 90 325 145 C 320 165 305 185 295 195 C 275 180 250 170 225 165 Z"
-            fill="url(#aortaWash)"
-            stroke="var(--ink)"
-            strokeWidth="1.4"
-          />
-          {/* Brachiocephalic / Carotid branches */}
-          <path
-            d="M 255 62 L 252 35 C 252 30 262 30 262 35 L 265 62"
-            fill="#EADBC0"
-            stroke="var(--ink)"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M 275 60 L 275 32 C 275 28 285 28 285 32 L 285 61"
-            fill="#EADBC0"
-            stroke="var(--ink)"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M 298 68 L 304 40 C 304 36 314 38 312 43 L 308 72"
-            fill="#EADBC0"
-            stroke="var(--ink)"
-            strokeWidth="1.2"
-          />
-
-          {/* Aorta Engraved Striae */}
-          <path
-            d="M 235 90 C 250 78 285 78 305 105 M 240 105 C 255 92 288 92 310 120 M 245 120 C 260 108 290 108 308 135"
+            className="hero-ecg-line"
+            d="M -60 155 L 70 155 L 82 155 L 90 147 L 98 155 L 105 162 L 115 110 L 128 182 L 142 144 L 152 155 L 290 155 L 305 155 L 315 145 L 325 155 L 332 164 L 342 108 L 355 180 L 368 144 L 378 155 L 515 155 L 610 155 L 622 155 L 630 147 L 638 155 L 645 162 L 655 110 L 668 182 L 682 144 L 692 155 L 820 155"
             stroke="var(--brass)"
-            strokeWidth="0.75"
-            fill="none"
+            strokeWidth="1.35"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             opacity="0.65"
           />
+        </g>
 
-          {/* Pulmonary Artery / Trunk */}
-          <path
-            d="M 260 140 C 270 125 300 125 325 145 C 345 160 340 190 320 200 C 290 190 265 175 260 140 Z"
-            fill="#D5DFDC"
-            stroke="var(--ink)"
-            strokeWidth="1.2"
-          />
+        {/* 2. Anatomical Heart (one continuous connected organ) */}
+        <g transform="translate(150 0)">
+          <g fill="none" stroke="var(--ink)" strokeLinecap="round" strokeLinejoin="round">
+            {/* great vessels (behind the body) */}
+            <g>
+              {/* superior vena cava */}
+              <path d="M140 160 L140 62" strokeWidth="30" stroke="var(--ink)" />
+              <path d="M140 160 L140 62" stroke="#C9D3CC" strokeWidth="27" />
+              {/* aortic arch */}
+              <path d="M262 156 C262 92 270 60 306 60 C342 60 352 100 350 166" strokeWidth="34" stroke="var(--ink)" />
+              <path d="M262 156 C262 92 270 60 306 60 C342 60 352 100 350 166" stroke="#E7C9BF" strokeWidth="31" />
+              {/* pulmonary trunk */}
+              <path d="M214 160 C206 124 198 108 186 96" strokeWidth="30" stroke="var(--ink)" />
+              <path d="M214 160 C206 124 198 108 186 96" stroke="#D6DDE3" strokeWidth="27" />
+              <path d="M186 98 C180 90 174 86 168 86" strokeWidth="22" stroke="var(--ink)" />
+              <path d="M186 98 C180 90 174 86 168 86" stroke="#D6DDE3" strokeWidth="19" />
+            </g>
 
-          {/* Right Atrium */}
-          <path
-            d="M 160 160 C 145 175 140 215 155 250 C 170 280 195 290 210 295 C 205 270 205 230 205 190 C 205 170 185 155 160 160 Z"
-            fill="url(#atriumWash)"
-            stroke="var(--ink)"
-            strokeWidth="1.3"
-          />
+            {/* heart body */}
+            <path
+              d="M168 150 C124 146 96 182 98 226 C100 276 128 312 160 352 C192 392 230 426 268 428 C318 428 356 360 368 286 C376 240 370 190 336 160 C310 138 274 152 244 146 C220 142 198 152 168 150 Z"
+              fill="#EBD3C8"
+              strokeWidth="2.2"
+              stroke="var(--ink)"
+            />
 
-          {/* Left Auricle / Atrium */}
-          <path
-            d="M 330 185 C 350 190 365 210 365 235 C 365 255 350 270 340 275 C 330 250 325 220 325 195 Z"
-            fill="url(#atriumWash)"
-            stroke="var(--ink)"
-            strokeWidth="1.2"
-          />
+            <g clipPath="url(#hero-body)">
+              {/* right atrium + auricle wash */}
+              <path d="M90 140 C130 140 176 150 190 176 C170 230 150 262 118 286 C96 270 84 230 90 140Z" fill="#E2D2B8" stroke="none" />
+              {/* left auricle wash */}
+              <path d="M300 140 C350 150 384 200 372 270 C340 250 312 214 300 140Z" fill="#E2D2B8" stroke="none" />
+              {/* left ventricle warm wash */}
+              <path d="M210 180 C260 170 330 200 372 250 L372 440 L220 440 C214 360 206 260 210 180Z" fill="#D9A79B" fillOpacity="0.55" stroke="none" />
+              <rect x="80" y="130" width="320" height="320" fill="url(#hero-hatch)" stroke="none" />
+              {/* coronary sulcus (atrioventricular groove) */}
+              <path d="M118 286 C160 262 200 232 232 196 C268 176 312 188 372 250" strokeWidth="1.4" strokeOpacity="0.55" stroke="var(--ink)" />
+              {/* interventricular groove */}
+              <path d="M214 160 C216 230 236 330 268 428" strokeWidth="1.4" strokeOpacity="0.55" stroke="var(--ink)" />
+              {/* anterior border shading */}
+              <path d="M118 262 C140 330 190 400 262 424" strokeWidth="1.1" strokeOpacity="0.35" stroke="var(--ink)" />
+              <path d="M338 214 C352 290 316 396 268 424" strokeWidth="1.1" strokeOpacity="0.35" stroke="var(--ink)" />
+            </g>
 
-          {/* Main Ventricular Mass (Left and Right Ventricles) */}
-          <path
-            d="M 195 285 C 185 320 195 365 225 405 C 255 440 290 460 300 465 C 308 460 335 425 355 375 C 375 325 370 275 340 265 C 310 255 240 255 195 285 Z"
-            fill="url(#ventricleWash)"
-            stroke="var(--ink)"
-            strokeWidth="1.5"
-          />
+            {/* coronary arteries in crimson */}
+            <g stroke="var(--crimson)" strokeWidth="3.2">
+              <path d="M214 164 C220 232 240 330 268 420" />
+              <path d="M232 214 C262 230 298 262 326 310" strokeWidth="2.2" />
+              <path d="M226 252 C250 262 272 288 290 330" strokeWidth="2" />
+              <path d="M118 290 C158 268 196 240 228 202 C196 196 160 214 150 244" strokeWidth="2.4" />
+              <path d="M244 308 C264 322 282 350 294 384" strokeWidth="1.8" />
+            </g>
 
-          {/* Shading fill pattern on posterior ventricle */}
-          <path
-            d="M 285 265 C 320 265 355 305 350 365 C 340 415 315 450 300 465 C 295 450 285 410 280 360 C 275 315 280 280 285 265 Z"
-            fill="url(#hatchH)"
-            opacity="0.3"
-          />
+            {/* outline over everything */}
+            <path
+              d="M168 150 C124 146 96 182 98 226 C100 276 128 312 160 352 C192 392 230 426 268 428 C318 428 356 360 368 286 C376 240 370 190 336 160 C310 138 274 152 244 146 C220 142 198 152 168 150 Z"
+              strokeWidth="2.2"
+              stroke="var(--ink)"
+              fill="none"
+            />
+            {/* aorta root highlight */}
+            <path d="M250 150 C256 160 270 158 276 148" strokeWidth="1.4" stroke="var(--ink)" fill="none" />
+          </g>
+        </g>
 
-          {/* Anterior Interventricular Sulcus & Coronary Arteries (Crimson linework) */}
-          <path
-            d="M 270 260 C 265 300 270 345 280 395 C 285 420 295 450 300 465"
-            stroke="var(--crimson)"
-            strokeWidth="2.2"
-            fill="none"
-            strokeLinecap="round"
-          />
-          {/* Arterial fine branches */}
-          <path
-            d="M 268 290 Q 250 310 235 320 M 271 325 Q 255 345 242 360 M 276 365 Q 260 385 250 405 M 274 310 Q 295 325 315 330 M 278 350 Q 300 370 320 380 M 283 395 Q 305 415 318 425"
-            stroke="var(--crimson)"
-            strokeWidth="1.2"
-            fill="none"
-            opacity="0.85"
-            strokeLinecap="round"
-          />
-
-          {/* Left Circumflex Branch */}
-          <path
-            d="M 275 258 C 305 262 335 272 352 290"
-            stroke="var(--crimson)"
-            strokeWidth="1.4"
-            fill="none"
-            opacity="0.8"
-          />
-
-          {/* Right Coronary Artery */}
-          <path
-            d="M 220 255 C 205 265 190 280 185 305"
-            stroke="var(--crimson)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.8"
-          />
-
-          {/* Muscular Etching Lines (Engraving hatching) */}
-          <g stroke="var(--ink)" strokeWidth="0.6" opacity="0.4" fill="none">
-            <path d="M 205 310 Q 220 330 240 345 M 210 330 Q 228 350 248 365 M 218 355 Q 235 375 258 390 M 228 380 Q 248 400 270 415 M 245 405 Q 265 425 285 440" />
-            <path d="M 335 295 Q 320 325 305 345 M 342 320 Q 325 350 308 375 M 338 350 Q 322 380 305 405 M 325 385 Q 312 415 298 435" />
+        {/* 3. Leader lines, anchor dots, and Montserrat text callouts */}
+        <g className="hero-callouts-desktop">
+          {/* Leader lines */}
+          <g stroke="var(--brass)" strokeWidth="1" fill="none">
+            <path d="M24 246 L300 246" />
+            <path d="M476 60 L556 60" />
+            <path d="M440 352 L470 400 L556 400" />
           </g>
 
-          {/* Cardiac Apex */}
-          <circle cx="300" cy="465" r="2.5" fill="var(--ink)" />
+          {/* Anchor dots */}
+          <g fill="var(--brass)">
+            <circle cx="300" cy="246" r="3.6" />
+            <circle cx="476" cy="60" r="3.6" />
+            <circle cx="440" cy="352" r="3.6" />
+          </g>
+
+          {/* Labels in Montserrat */}
+          <g fontFamily="var(--font-sans), Montserrat, system-ui, sans-serif">
+            {/* Left label: ca */}
+            <text x="24" y="224" fontSize="14" fontWeight="600" fill="var(--ink)">
+              ca: major vessels
+            </text>
+            <text x="24" y="242" fontSize="11" fill="var(--mute)">
+              fluoroscopy, 0 to 3
+            </text>
+
+            {/* Right upper label: thalach */}
+            <text x="562" y="56" fontSize="14" fontWeight="600" fill="var(--ink)">
+              thalach: max HR
+            </text>
+            <text x="562" y="74" fontSize="11" fill="var(--mute)">
+              peak exercise, 71–202 bpm
+            </text>
+
+            {/* Right lower label: oldpeak */}
+            <text x="562" y="396" fontSize="14" fontWeight="600" fill="var(--ink)">
+              oldpeak: ST depression
+            </text>
+            <text x="562" y="414" fontSize="11" fill="var(--mute)">
+              exercise-induced, 0–6.2
+            </text>
+          </g>
         </g>
-
-        {/* --- THREE HAIRLINE-BOXED ANNOTATION PLATES PINNED TO THE HEART --- */}
-
-        {/* 1. Top-Left: "ca: major vessels" */}
-        <g transform="translate(32, 105)">
-          {/* Leader line to coronary artery root */}
-          <path
-            d="M 125 18 L 195 18 L 220 155"
-            fill="none"
-            stroke="var(--brass)"
-            strokeWidth="1"
-            strokeDasharray="3 2"
-          />
-          <circle cx="220" cy="155" r="3" fill="var(--brass)" stroke="var(--ink)" strokeWidth="0.75" />
-          {/* Label Card */}
-          <rect
-            x="0"
-            y="0"
-            width="132"
-            height="36"
-            fill="var(--paper)"
-            stroke="var(--line)"
-            strokeWidth="1"
-            rx="2"
-          />
-          <rect x="0" y="0" width="3" height="36" fill="var(--brass)" rx="1" />
-          <text x="10" y="15" fontFamily="var(--font-sans)" fontSize="10.5" fontWeight="600" fill="var(--ink)">
-            ca: major vessels
-          </text>
-          <text x="10" y="28" fontFamily="var(--font-sans)" fontSize="9" fill="var(--mute)">
-            fluoroscopy · 0 to 3
-          </text>
-        </g>
-
-        {/* 2. Top-Right: "thalach: max heart rate" */}
-        <g transform="translate(315, 140)">
-          {/* Leader line to sinoatrial / conduction base */}
-          <path
-            d="M 0 18 L -35 18 L -65 60"
-            fill="none"
-            stroke="var(--brass)"
-            strokeWidth="1"
-            strokeDasharray="3 2"
-          />
-          <circle cx="-65" cy="60" r="3" fill="var(--brass)" stroke="var(--ink)" strokeWidth="0.75" />
-          {/* Label Card */}
-          <rect
-            x="0"
-            y="0"
-            width="145"
-            height="36"
-            fill="var(--paper)"
-            stroke="var(--line)"
-            strokeWidth="1"
-            rx="2"
-          />
-          <rect x="142" y="0" width="3" height="36" fill="var(--brass)" rx="1" />
-          <text x="10" y="15" fontFamily="var(--font-sans)" fontSize="10.5" fontWeight="600" fill="var(--ink)">
-            thalach: max HR
-          </text>
-          <text x="10" y="28" fontFamily="var(--font-sans)" fontSize="9" fill="var(--mute)">
-            peak exercise · 71–202 bpm
-          </text>
-        </g>
-
-        {/* 3. Bottom-Left: "oldpeak: ST depression" */}
-        <g transform="translate(45, 375)">
-          {/* Leader line to left ventricular myocardium */}
-          <path
-            d="M 140 18 L 190 18 L 245 10"
-            fill="none"
-            stroke="var(--brass)"
-            strokeWidth="1"
-            strokeDasharray="3 2"
-          />
-          <circle cx="245" cy="10" r="3" fill="var(--brass)" stroke="var(--ink)" strokeWidth="0.75" />
-          {/* Label Card */}
-          <rect
-            x="0"
-            y="0"
-            width="142"
-            height="36"
-            fill="var(--paper)"
-            stroke="var(--line)"
-            strokeWidth="1"
-            rx="2"
-          />
-          <rect x="0" y="0" width="3" height="36" fill="var(--crimson)" rx="1" />
-          <text x="10" y="15" fontFamily="var(--font-sans)" fontSize="10.5" fontWeight="600" fill="var(--ink)">
-            oldpeak: ST depression
-          </text>
-          <text x="10" y="28" fontFamily="var(--font-sans)" fontSize="9" fill="var(--mute)">
-            exercise induced · 0–6.2
-          </text>
-        </g>
-
-        {/* Bottom Plate Caption */}
-        <text
-          x="250"
-          y="492"
-          textAnchor="middle"
-          fontFamily="var(--font-serif)"
-          fontStyle="italic"
-          fontSize="11"
-          fill="var(--mute)"
-        >
-          Fig. 1. Cor humanum: anterior view with key clinical predictive loci.
-        </text>
       </svg>
+
+      {/* 4. Mobile legend displayed under the heart on screens < 640px */}
+      <div
+        className="hero-legend-mobile"
+        style={{
+          marginTop: '1.25rem',
+          padding: '0.85rem 1.1rem',
+          backgroundColor: 'var(--paper)',
+          border: '1px solid var(--line)',
+          borderRadius: '4px',
+          flexDirection: 'column',
+          gap: '0.65rem',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+          <span
+            style={{
+              width: '7px',
+              height: '7px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--brass)',
+              flexShrink: 0,
+              marginTop: '5px',
+            }}
+            aria-hidden="true"
+          />
+          <div style={{ fontSize: '0.85rem', lineHeight: 1.4 }}>
+            <strong style={{ fontWeight: 600, color: 'var(--ink)' }}>ca: major vessels</strong>
+            <span style={{ color: 'var(--mute)', marginLeft: '0.4rem' }}>— fluoroscopy, 0 to 3</span>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+          <span
+            style={{
+              width: '7px',
+              height: '7px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--brass)',
+              flexShrink: 0,
+              marginTop: '5px',
+            }}
+            aria-hidden="true"
+          />
+          <div style={{ fontSize: '0.85rem', lineHeight: 1.4 }}>
+            <strong style={{ fontWeight: 600, color: 'var(--ink)' }}>thalach: max HR</strong>
+            <span style={{ color: 'var(--mute)', marginLeft: '0.4rem' }}>— peak exercise, 71–202 bpm</span>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+          <span
+            style={{
+              width: '7px',
+              height: '7px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--brass)',
+              flexShrink: 0,
+              marginTop: '5px',
+            }}
+            aria-hidden="true"
+          />
+          <div style={{ fontSize: '0.85rem', lineHeight: 1.4 }}>
+            <strong style={{ fontWeight: 600, color: 'var(--ink)' }}>oldpeak: ST depression</strong>
+            <span style={{ color: 'var(--mute)', marginLeft: '0.4rem' }}>— exercise-induced, 0–6.2</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
-

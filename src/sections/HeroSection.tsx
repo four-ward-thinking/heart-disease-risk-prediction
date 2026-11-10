@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ metrics }) => {
           }}
         >
           {/* Left Column (7 cols on desktop) */}
-          <div style={{ gridColumn: 'span 12' }} className="hero-left">
+          <div className="hero-left">
             <span className="eyebrow eyebrow-brass">Cleveland Heart Disease · Mini-Project 3</span>
             <h1
               style={{
@@ -60,7 +60,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ metrics }) => {
           </div>
 
           {/* Right Column (5 cols on desktop) - Anatomical Engraved Plate */}
-          <div style={{ gridColumn: 'span 12' }} className="hero-right">
+          <div className="hero-right">
             <HeartHeroIllustration />
           </div>
         </div>
